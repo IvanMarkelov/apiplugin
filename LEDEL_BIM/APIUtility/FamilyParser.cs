@@ -12,7 +12,7 @@ namespace LEDEL_BIM.APIUtility
     {
         static void Main()
         {
-            string[] filePaths = Directory.GetFiles(@"C:\Users\Admin\Desktop\REVIT_BIM\Revit Family Types", "*.txt");
+            string[] filePaths = Directory.GetFiles(@"D:\CS plugin for Revit\Revit Family Types", "*.txt");
             foreach (string filePath in filePaths)
             {
                 List<string> listOfLines = GetListOfLines(filePath);

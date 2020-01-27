@@ -110,24 +110,15 @@
                     <TextBlock Text="{Binding FamilyName}" />
                     <HierarchicalDataTemplate.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding FamilyTypeName}">
-                            </TextBlock>
+                            <TextBlock Text="{Binding FamilyTypeName}" />
                         </DataTemplate>
                     </HierarchicalDataTemplate.ItemTemplate>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
 
-        <Button x:Name="applyButton" Content="Применить" Grid.Column="3" Grid.Row="6" Margin="15" Click="Button_Click"/>
-        <Button x:Name="insertTypeButton" Content="Вставить светильник" Grid.Column="3" Grid.Row="7" Margin="15" Click="InsertTypeButton_Click">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="IsEnabled" Value="True"/>
-                    <Style.Triggers>
-                        <DataTrigger/>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
+        <Button x:Name="applyButton" Content="Применить" Grid.Column="3" Grid.Row="7" Margin="15" Click="Button_Click"/>
+        <Button x:Name="insertTypeButton" Content="Вставить светильник" Grid.Column="1" Grid.Row="7" Margin="15" Click="InsertTypeButton_Click">
         </Button>
     </Grid>
 </Window>

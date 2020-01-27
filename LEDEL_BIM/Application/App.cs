@@ -49,7 +49,6 @@ namespace LEDEL_BIM
             pushButton.Image = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "Ledel_logoS.png"));
         //    pushButton.ToolTipImage = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "Ledel_logoS.png"));
             pushButton.ToolTip = "Вызвать меню подбора светильника.";
-
             //application.ControlledApplication.DocumentCreated += new EventHandler<Autodesk.Revit.DB.Events.DocumentCreatedEventArgs>(DocumentCreated);
             //CreateWindow();
             //ShowMainWindow(application, "Window", pb);

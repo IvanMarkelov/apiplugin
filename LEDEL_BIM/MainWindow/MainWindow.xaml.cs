@@ -36,11 +36,15 @@ namespace LEDEL_BIM.MainWindow
         // double loadFromValue;
         // double loadToValue;
         string familyName = defaultFamilyName;
+        InsertFamilyType ift;
+        ExternalEvent TypeInserting;
 
         public MainWindow()
         {
             InitializeComponent();
             ShowUpdatedTree();
+            ift = new InsertFamilyType();
+            TypeInserting = ExternalEvent.Create(ift);
         }
 
         private void ShowUpdatedTree()
@@ -79,17 +83,18 @@ namespace LEDEL_BIM.MainWindow
 
         private void InsertTypeButton_Click(object sender, RoutedEventArgs e)
         {
-            string selectedFamilyType;
-            TreeViewItem selectedItem = (TreeViewItem)treeViewLFF.SelectedItem;
-            if (selectedItem != null)
-            {
-                selectedFamilyType = selectedItem.Name;
-            }
-            else
-            {
-                selectedFamilyType = "Пожалуйста, выберете светильник из списка.";
-            }
-            MessageBox.Show(selectedFamilyType);
+            /*   string selectedFamilyType;
+               TreeViewItem selectedItem = (TreeViewItem)treeViewLFF.SelectedItem;
+               if (selectedItem != null)
+               {
+                   selectedFamilyType = selectedItem.Name;
+               }
+               else
+               {
+                   selectedFamilyType = "Пожалуйста, выберете светильник из списка.";
+               }
+               MessageBox.Show(selectedFamilyType);*/
+            TypeInserting.Raise();
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
@@ -127,8 +132,8 @@ namespace LEDEL_BIM.MainWindow
         private List<LightingFixtureFamily> ListGetter()
         {
             string[] filePaths = Directory.GetFiles(@"C:\Users\Admin\Desktop\REVIT_BIM\Revit Family Types", "*.txt");
-            List<LightingFixtureFamily> families = new List<LightingFixtureFamily>();
-            families = APIUtility.FamilyParser.RetriveAllFamiliesFromFolder(filePaths);
+        //    List<LightingFixtureFamily> families = new List<LightingFixtureFamily>();
+            List<LightingFixtureFamily> families = APIUtility.FamilyParser.RetriveAllFamiliesFromFolder(filePaths);
 
             return families;
         }
@@ -149,7 +154,6 @@ namespace LEDEL_BIM.MainWindow
                 colorTemperatureList.Text = "Цветовая температура";
             else
                 Button_Click(sender, e);
-
         }
     }
 }

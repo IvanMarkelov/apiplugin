@@ -20,26 +20,36 @@ namespace LEDEL_BIM
         public Result Execute(ExternalCommandData revit, ref string message, ElementSet elements)
         {
             MainWindow.MainWindow mainWindow = new MainWindow.MainWindow();
-            mainWindow.ShowDialog();
+            mainWindow.Show();
 
             return Result.Succeeded;
         }
     }
 
     [Transaction(TransactionMode.Manual)]
-    public class InsertFamilyType : IExternalCommand
+    public class InsertFamilyType : IExternalEventHandler
     {
         Application m_rvtApp;
         Document m_rvtDoc;
-        public Result Execute(ExternalCommandData commandData,
+    /*    public Result Execute(ExternalCommandData commandData,
             ref string message,
-            ElementSet elements)
+            ElementSet elements)*/
+            public string GetName()
         {
-            //  Get the access to the top most objects. 
-            UIApplication rvtUIApp = commandData.Application;
-            UIDocument rvtUIDoc = rvtUIApp.ActiveUIDocument;
-            m_rvtApp = rvtUIApp.Application;
-            m_rvtDoc = rvtUIDoc.Document;
+            return "Insert Family Type";
+        }
+        public void Execute(UIApplication rvtUIApp)
+        {
+            //  Get the access to the top most objects.
+
+            UIDocument uidoc = rvtUIApp.ActiveUIDocument;
+            Document m_rvtDoc = uidoc.Document;
+
+
+          //  UIApplication rvtUIApp = commandData.Application;
+       //     UIDocument rvtUIDoc = rvtUIApp.ActiveUIDocument;
+        //    m_rvtApp = rvtUIApp.Application;
+       //     m_rvtDoc = rvtUIDoc.Document;
 
             FamilySymbol family = null;
 
@@ -50,8 +60,7 @@ namespace LEDEL_BIM
             trans.Commit();
 
             rvtUIApp.ActiveUIDocument.PromptForFamilyInstancePlacement(family);
-
-            return Result.Succeeded;
+           // return Result.Succeeded;
         }
 
     }
