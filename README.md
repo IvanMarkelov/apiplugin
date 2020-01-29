@@ -1,5 +1,5 @@
 # apiplugin
-Building a plugin for Revit API
+Building a plugin for Revit API.
 What plugin does?
 Adds a ribbon panel with a button to Revit Add-Inn panel.
 Button activates a WPF window with a list of available lighting fixtures.
