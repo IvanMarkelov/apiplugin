@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LEDEL_BIM.Utility
 {
-    class Filter
+    class Filters
     {
         private static List<LightingFixtureType> FilterByFamilyName(List<LightingFixtureType> types, string familyNameFilter)
         {
@@ -27,7 +27,7 @@ namespace LEDEL_BIM.Utility
         {
             if (familyCategoryFilter != null)
             {
-                if (familyCategoryFilter == "Категории светильника" || familyCategoryFilter == "")
+                if (familyCategoryFilter == "Категория светильника" || familyCategoryFilter == "")
                 {
                 }
                 else

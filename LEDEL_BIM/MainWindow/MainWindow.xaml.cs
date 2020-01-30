@@ -57,7 +57,7 @@ namespace LEDEL_BIM.MainWindow
             List<LightingFixtureFamily> filteredFamilies = new List<LightingFixtureFamily>();
             foreach (LightingFixtureFamily family in families)
             {
-                temporaryTypeList = Utility.Filter.SearchList(family.FamilyTypes,
+                temporaryTypeList = Utility.Filters.SearchList(family.FamilyTypes,
                     namesList.Text,
                     typeList.Text,
                     GetDoubleValue(this.loadFrom.Text, defaultLoadFromValue),
@@ -154,6 +154,15 @@ namespace LEDEL_BIM.MainWindow
                 colorTemperatureList.Text = "Цветовая температура";
             else
                 Button_Click(sender, e);
+        }
+
+        private void treeViewLFF_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            object obj = (object)treeViewLFF.SelectedItem;
+            if (obj is LightingFixtureType)
+            {
+                insertButton.IsEnabled = true;
+            }
         }
     }
 }

@@ -104,7 +104,8 @@
             Подбор светильника
         </TextBlock>
 
-        <TreeView x:Name="treeViewLFF" Grid.Column="3" Grid.Row="2" Grid.RowSpan="4">
+        <TreeView x:Name="treeViewLFF" SelectedItemChanged="treeViewLFF_SelectedItemChanged"
+                  Grid.Column="3" Grid.Row="2" Grid.RowSpan="5">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=FamilyTypes}">
                     <TextBlock Text="{Binding FamilyName}" />
@@ -117,8 +118,13 @@
             </TreeView.ItemTemplate>
         </TreeView>
 
-        <Button x:Name="applyButton" Content="Применить" Grid.Column="3" Grid.Row="7" Margin="15" Click="Button_Click"/>
-        <Button x:Name="insertTypeButton" Content="Вставить светильник" Grid.Column="1" Grid.Row="7" Margin="15" Click="InsertTypeButton_Click">
+        <Button x:Name="applyButton" Content="Применить"
+                Grid.Column="3" Grid.Row="7" Margin="15"
+                Click="Button_Click"/>
+        <Button x:Name="insertButton" Content="Вставить светильник"
+                Grid.Column="1" Grid.Row="7" Margin="15"
+                IsEnabled="False"
+                Click="InsertTypeButton_Click">
         </Button>
     </Grid>
 </Window>

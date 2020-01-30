@@ -18,3 +18,13 @@ C:\Users\Admin\source\repos\LEDEL_BIM\LEDEL_BIM\bin\Debug\LEDEL_BIM.dll
 C:\Users\Admin\source\repos\LEDEL_BIM\LEDEL_BIM\obj\Debug\MainWindow\MainWindow.baml
 C:\Users\Admin\source\repos\LEDEL_BIM\LEDEL_BIM\obj\Debug\LEDEL_BIM.g.resources
 C:\Users\Admin\source\repos\LEDEL_BIM\LEDEL_BIM\obj\Debug\LEDEL_BIM.csproj.CoreCompileInputs.cache
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\LEDEL_BIM.dll
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\LEDEL_BIM.pdb
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\LEDEL_BIM.csprojAssemblyReference.cache
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\MainWindow\MainWindow.g.cs
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\LEDEL_BIM_MarkupCompile.cache
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\LEDEL_BIM_MarkupCompile.lref
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\MainWindow\MainWindow.baml
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\LEDEL_BIM.g.resources
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\LEDEL_BIM.dll
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\LEDEL_BIM.pdb
