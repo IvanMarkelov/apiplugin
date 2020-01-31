@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+   <AddIn Type="Application">
+      <Assembly>C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\LEDEL_BIM.dll</Assembly>
+      <ClientId>386047DB-6453-466B-A8FB-45E7B71C61D3</ClientId>
+      <FullClassName>LEDEL_BIM.App</FullClassName>
+      <Name>LEDEL_BIM</Name>
+      <VendorId>LEDEL</VendorId>
+      <VendorDescription>LEDEL Ltd, www.ledel.ru</VendorDescription>	  
+   </AddIn>
+</RevitAddIns>
