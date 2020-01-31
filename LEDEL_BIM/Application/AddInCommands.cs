@@ -44,21 +44,28 @@ namespace LEDEL_BIM
 
             UIDocument uidoc = rvtUIApp.ActiveUIDocument;
             Document m_rvtDoc = uidoc.Document;
-           // string familyFilePath = MainWindow.MainWindow.lft.Family.FamilyPath;
-           // string typeName = MainWindow.MainWindow.lft.FamilyTypeName;
+            string familyFilePath = MainWindow.MainWindow.lft.Family.FamilyPath;
+            string typeName = MainWindow.MainWindow.lft.FamilyTypeName;
 
-          //  UIApplication rvtUIApp = commandData.Application;
-       //     UIDocument rvtUIDoc = rvtUIApp.ActiveUIDocument;
-        //    m_rvtApp = rvtUIApp.Application;
-       //     m_rvtDoc = rvtUIDoc.Document;
+            //  UIApplication rvtUIApp = commandData.Application;
+            //     UIDocument rvtUIDoc = rvtUIApp.ActiveUIDocument;
+            //    m_rvtApp = rvtUIApp.Application;
+            //     m_rvtDoc = rvtUIDoc.Document;
 
             FamilySymbol family = null;
 
             Transaction trans = new Transaction(m_rvtDoc);
             trans.Start("Loading and Inserting the Luminaire");
-            m_rvtDoc.LoadFamily("C:\\Users\\Admin\\Desktop\\REVIT_BIM\\Revit Family Types\\L-banner 600.rfa");
-            m_rvtDoc.LoadFamilySymbol("C:\\Users\\Admin\\Desktop\\REVIT_BIM\\Revit Family Types\\L-banner 600.rfa", "L-banner 600-К8-4.0K", out family);
+            //   m_rvtDoc.LoadFamily("C:\\Users\\Admin\\Desktop\\REVIT_BIM\\Revit Family Types\\L-banner 600.rfa");
+            //  m_rvtDoc.LoadFamilySymbol("C:\\Users\\Admin\\Desktop\\REVIT_BIM\\Revit Family Types\\L-banner 600.rfa", "L-banner 600-К8-4.0K", out family);
+
+            m_rvtDoc.LoadFamily(familyFilePath);
+            m_rvtDoc.LoadFamilySymbol(familyFilePath, typeName, out family);
+
             trans.Commit();
+
+          //  MainWindow.SecondaryWindow main = new MainWindow.SecondaryWindow(familyFilePath);
+          //  main.ShowDialog();
 
             rvtUIApp.ActiveUIDocument.PromptForFamilyInstancePlacement(family);
            // return Result.Succeeded;

@@ -26,6 +26,14 @@ namespace LEDEL_BIM.MainWindow
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    public partial class SecondaryWindow : Window
+    {
+        string fp = "Testing secondary window.";
+        public SecondaryWindow(string fp)
+        {
+            MessageBox.Show(fp);
+        }
+    }
     public partial class MainWindow : Window
     {
         internal static double defaultLoadFromValue = 0;
@@ -33,7 +41,7 @@ namespace LEDEL_BIM.MainWindow
         internal static double defaultFluxFromValue = 0;
         internal static double defaultFluxToValue = 1000000;
         internal static string defaultFamilyName = null;
-        internal LightingFixtureType lft;
+        public static LightingFixtureType lft;
         // double loadFromValue;
         // double loadToValue;
         string familyName = defaultFamilyName;
@@ -82,11 +90,13 @@ namespace LEDEL_BIM.MainWindow
 
         private void InsertButton_Click(object sender, RoutedEventArgs e)
         {
+            lft = (LightingFixtureType)treeViewLFF.SelectedItem;
             ift = new InsertFamilyType();
+            MessageBox.Show($"Светильник {lft.FamilyTypeName}, находящийся в {lft.Family.FamilyPath} будет вставлен в проект.");
+            MessageBox.Show(File.Exists(lft.Family.FamilyPath).ToString());
             TypeInserting = ExternalEvent.Create(ift);
-            TypeInserting.Raise();
-            MessageBox.Show($"Светильник {treeViewLFF.SelectedItem.ToString()} будет вставлен в проект.");
             Close();
+            TypeInserting.Raise();
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
@@ -154,7 +164,6 @@ namespace LEDEL_BIM.MainWindow
             if (obj is LightingFixtureType)
             {
                 insertButton.IsEnabled = true;
-                lft = (LightingFixtureType)obj;
             }
 
         }
