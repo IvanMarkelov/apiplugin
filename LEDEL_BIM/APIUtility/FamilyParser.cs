@@ -141,7 +141,7 @@ namespace LEDEL_BIM.APIUtility
 
         public static List<LightingFixtureFamily> RetriveAllFamiliesFromFolder(string[] filePaths)
         {
-            List<LightingFixtureFamily> theList = new List<LightingFixtureFamily>();
+            List<LightingFixtureFamily> listOfFamilies = new List<LightingFixtureFamily>();
 
             foreach (string filePath in filePaths)
             {
@@ -159,10 +159,14 @@ namespace LEDEL_BIM.APIUtility
                     //Console.WriteLine(lft);
                 }
                 LightingFixtureFamily lff = new LightingFixtureFamily(GetFamilyName(filePath), GetRfaPath(filePath), familyTypes);
+                foreach (LightingFixtureType type in lff.FamilyTypes)
+                {
+                    type.Family = lff;
+                }
                 //Console.WriteLine(lff);
-                theList.Add(lff);
+                listOfFamilies.Add(lff);
             }
-            return theList;
+            return listOfFamilies;
         }
 
         public static string GetFamilyName(string filePath)

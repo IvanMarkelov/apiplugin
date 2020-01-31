@@ -33,6 +33,7 @@ namespace LEDEL_BIM.MainWindow
         internal static double defaultFluxFromValue = 0;
         internal static double defaultFluxToValue = 1000000;
         internal static string defaultFamilyName = null;
+        internal LightingFixtureType lft;
         // double loadFromValue;
         // double loadToValue;
         string familyName = defaultFamilyName;
@@ -153,7 +154,9 @@ namespace LEDEL_BIM.MainWindow
             if (obj is LightingFixtureType)
             {
                 insertButton.IsEnabled = true;
+                lft = (LightingFixtureType)obj;
             }
+
         }
     }
 }

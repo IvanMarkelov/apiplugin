@@ -31,6 +31,10 @@ namespace LEDEL_BIM
         {
             get; set;
         }
+        public LightingFixtureFamily Family
+        {
+            get; set;
+        }
 
         public LightingFixtureType(string familyTypeName, string familyCategory, double load, double flux, double color)
         {
@@ -39,6 +43,15 @@ namespace LEDEL_BIM
             this.ApparentLoad = load;
             this.LightFlux = flux;
             this.TemperatureColor = color;
+        }
+        public LightingFixtureType(string familyTypeName, string familyCategory, double load, double flux, double color, LightingFixtureFamily family)
+        {
+            this.FamilyTypeName = familyTypeName;
+            this.FamilyCategory = familyCategory;
+            this.ApparentLoad = load;
+            this.LightFlux = flux;
+            this.TemperatureColor = color;
+            this.Family = family;
         }
 
         public override string ToString()

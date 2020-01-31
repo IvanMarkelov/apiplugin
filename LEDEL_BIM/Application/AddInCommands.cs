@@ -44,7 +44,8 @@ namespace LEDEL_BIM
 
             UIDocument uidoc = rvtUIApp.ActiveUIDocument;
             Document m_rvtDoc = uidoc.Document;
-
+           // string familyFilePath = MainWindow.MainWindow.lft.Family.FamilyPath;
+           // string typeName = MainWindow.MainWindow.lft.FamilyTypeName;
 
           //  UIApplication rvtUIApp = commandData.Application;
        //     UIDocument rvtUIDoc = rvtUIApp.ActiveUIDocument;
