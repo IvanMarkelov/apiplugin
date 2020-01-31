@@ -124,7 +124,7 @@
         <Button x:Name="insertButton" Content="Вставить светильник"
                 Grid.Column="1" Grid.Row="7" Margin="15"
                 IsEnabled="False"
-                Click="InsertTypeButton_Click">
+                Click="InsertButton_Click">
         </Button>
     </Grid>
 </Window>

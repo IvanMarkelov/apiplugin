@@ -20,7 +20,7 @@ namespace LEDEL_BIM
         public Result Execute(ExternalCommandData revit, ref string message, ElementSet elements)
         {
             MainWindow.MainWindow mainWindow = new MainWindow.MainWindow();
-            mainWindow.Show();
+            mainWindow.ShowDialog();
 
             return Result.Succeeded;
         }

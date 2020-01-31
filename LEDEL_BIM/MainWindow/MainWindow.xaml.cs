@@ -43,8 +43,6 @@ namespace LEDEL_BIM.MainWindow
         {
             InitializeComponent();
             ShowUpdatedTree();
-            ift = new InsertFamilyType();
-            TypeInserting = ExternalEvent.Create(ift);
         }
 
         private void ShowUpdatedTree()
@@ -81,20 +79,13 @@ namespace LEDEL_BIM.MainWindow
             ShowUpdatedTree();
         }
 
-        private void InsertTypeButton_Click(object sender, RoutedEventArgs e)
+        private void InsertButton_Click(object sender, RoutedEventArgs e)
         {
-            /*   string selectedFamilyType;
-               TreeViewItem selectedItem = (TreeViewItem)treeViewLFF.SelectedItem;
-               if (selectedItem != null)
-               {
-                   selectedFamilyType = selectedItem.Name;
-               }
-               else
-               {
-                   selectedFamilyType = "Пожалуйста, выберете светильник из списка.";
-               }
-               MessageBox.Show(selectedFamilyType);*/
+            ift = new InsertFamilyType();
+            TypeInserting = ExternalEvent.Create(ift);
             TypeInserting.Raise();
+            MessageBox.Show($"Светильник {treeViewLFF.SelectedItem.ToString()} будет вставлен в проект.");
+            Close();
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
