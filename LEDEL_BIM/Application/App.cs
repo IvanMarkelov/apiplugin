@@ -43,7 +43,7 @@ namespace LEDEL_BIM
             string panelSampleName = "Подбор светильника";
             RibbonPanel ribbonPanel = application.CreateRibbonPanel(panelSampleName);
 
-            PushButtonData pushButtonData = new PushButtonData("nameButton", "LEDEL", AddInPath, "LEDEL_BIM.ShowMainWindow");
+            PushButtonData pushButtonData = new PushButtonData("nameButton", "Подбор\n светильника", AddInPath, "LEDEL_BIM.ShowMainWindow");
             PushButton pushButton = ribbonPanel.AddItem(pushButtonData) as PushButton;
             pushButton.LargeImage = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "Ledel_logo.png"));
             pushButton.Image = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "Ledel_logoS.png"));

@@ -59,20 +59,22 @@ namespace LEDEL_BIM.MainWindow
         public MainWindow()
         {
             InitializeComponent();
-            ShowUpdatedTree();
+            ShowTree();
         }
-
+        private void ShowTree()
+        {
+            List<LightingFixtureFamily> families = ListGetter();
+            namesList.ItemsSource = families;
+            treeViewLFF.ItemsSource = families;
+        }
         private void ShowUpdatedTree()
         {
             List<LightingFixtureFamily> families = ListGetter();
 
-
-            List<LightingFixtureType> temporaryTypeList = new List<LightingFixtureType>();
-
             List<LightingFixtureFamily> filteredFamilies = new List<LightingFixtureFamily>();
             foreach (LightingFixtureFamily family in families)
             {
-                temporaryTypeList = Utility.Filters.SearchList(family.FamilyTypes,
+                List<LightingFixtureType> temporaryTypeList = Utility.Filters.SearchList(family.FamilyTypes,
                     namesList.Text,
                     typeList.Text,
                     GetDoubleValue(this.loadFrom.Text, defaultLoadFromValue),
@@ -87,7 +89,6 @@ namespace LEDEL_BIM.MainWindow
                 }
             }
             treeViewLFF.ItemsSource = filteredFamilies;
-            namesList.ItemsSource = families;
         }
 
 
@@ -116,7 +117,7 @@ namespace LEDEL_BIM.MainWindow
         {
             System.Windows.Controls.TextBox tb = (System.Windows.Controls.TextBox)sender;
             tb.Text = string.Empty;
-            tb.GotFocus -= TextBox_GotFocus;
+          //  tb.GotFocus -= TextBox_GotFocus;
         }
 
         private double GetDoubleValue(string valueAsString, double defaultValue)
@@ -136,9 +137,15 @@ namespace LEDEL_BIM.MainWindow
         {
             System.Windows.Controls.ComboBox cb = (System.Windows.Controls.ComboBox)sender;
             cb.Text = string.Empty;
+          //  cb.GotFocus -= ComboBox_GotFocus;
+        }
+        private void ComboBox_GotFocus2(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.ComboBox cb = (System.Windows.Controls.ComboBox)sender;
+            string temp = cb.Text;
+            cb.Text = string.Empty;
             cb.GotFocus -= ComboBox_GotFocus;
         }
-
         private List<LightingFixtureFamily> ListGetter()
         {
             string[] filePaths = Directory.GetFiles(@"C:\Users\Admin\Desktop\REVIT_BIM\Revit Family Types", "*.txt");
