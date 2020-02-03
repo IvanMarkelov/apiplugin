@@ -31,6 +31,10 @@ namespace LEDEL_BIM
         {
             get; set;
         }
+        public string PhotometricWeb
+        {
+            get; set;
+        }
         public LightingFixtureFamily Family
         {
             get; set;
@@ -43,6 +47,15 @@ namespace LEDEL_BIM
             this.ApparentLoad = load;
             this.LightFlux = flux;
             this.TemperatureColor = color;
+        }
+        public LightingFixtureType(string familyTypeName, string familyCategory, double load, double flux, double color, string photometricWeb)
+        {
+            this.FamilyTypeName = familyTypeName;
+            this.FamilyCategory = familyCategory;
+            this.ApparentLoad = load;
+            this.LightFlux = flux;
+            this.TemperatureColor = color;
+            this.PhotometricWeb = photometricWeb;
         }
         public LightingFixtureType(string familyTypeName, string familyCategory, double load, double flux, double color, LightingFixtureFamily family)
         {

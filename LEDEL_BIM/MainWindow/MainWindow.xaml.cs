@@ -40,7 +40,15 @@ namespace LEDEL_BIM.MainWindow
         internal static double defaultLoadToValue = 5000;
         internal static double defaultFluxFromValue = 0;
         internal static double defaultFluxToValue = 1000000;
-        internal static string defaultFamilyName = null;
+        internal static string defaultFamilyName = "Наименование светильника";
+        internal static string defaultCategoryName = "Категория светильника";
+        internal static string defaultLoadFrom = "Напряжение В, от";
+        internal static string defaultLoadTo = "Напряжение В, до";
+        internal static string defaultFluxFrom = "Световой поток лк, от";
+        internal static string defaultFluxTo = "Световой поток лк, до";
+        internal static string defaultTemperature = "Цветовая температура";
+        internal static string defaultPhotometricWeb = "Тип КСС";
+
         public static LightingFixtureType lft;
         // double loadFromValue;
         // double loadToValue;
@@ -166,6 +174,19 @@ namespace LEDEL_BIM.MainWindow
                 insertButton.IsEnabled = true;
             }
 
+        }
+
+        private void defaultFiltersButton_Click(object sender, RoutedEventArgs e)
+        {
+            namesList.Text = defaultFamilyName;
+            typeList.Text = defaultCategoryName;
+            loadFrom.Text = defaultLoadFrom;
+            loadTo.Text = defaultLoadTo;
+            fluxFrom.Text = defaultFluxFrom;
+            fluxTo.Text = defaultFluxTo;
+            colorTemperatureList.Text = defaultTemperature;
+            photometricWebList.Text = defaultPhotometricWeb;
+            ShowUpdatedTree();
         }
     }
 }

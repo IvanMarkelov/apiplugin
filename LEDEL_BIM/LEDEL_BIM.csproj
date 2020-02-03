@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIUtility\FamilyParser.cs" />
+    <Compile Include="APIUtility\FamilyRFAParser.cs" />
     <Compile Include="Application\AddInCommands.cs" />
     <Compile Include="Application\App.cs" />
     <Compile Include="Application\LightingFixtureType.cs" />
