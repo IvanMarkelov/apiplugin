@@ -31,6 +31,10 @@ namespace LEDEL_BIM
         {
             get; set;
         }
+        public string TypeDescription
+        {
+            get; set;
+        }
         public string PhotometricWeb
         {
             get; set;
@@ -48,7 +52,7 @@ namespace LEDEL_BIM
             this.LightFlux = flux;
             this.TemperatureColor = color;
         }
-        public LightingFixtureType(string familyTypeName, string familyCategory, double load, double flux, double color, string photometricWeb)
+        public LightingFixtureType(string familyTypeName, string familyCategory, double load, double flux, double color, string photometricWeb, string typeDescription)
         {
             this.FamilyTypeName = familyTypeName;
             this.FamilyCategory = familyCategory;
@@ -56,14 +60,17 @@ namespace LEDEL_BIM
             this.LightFlux = flux;
             this.TemperatureColor = color;
             this.PhotometricWeb = photometricWeb;
+            this.TypeDescription = typeDescription;
         }
-        public LightingFixtureType(string familyTypeName, string familyCategory, double load, double flux, double color, LightingFixtureFamily family)
+        public LightingFixtureType(string familyTypeName, string familyCategory, double load, double flux, double color, string photometricWeb, string typeDescription, LightingFixtureFamily family)
         {
             this.FamilyTypeName = familyTypeName;
             this.FamilyCategory = familyCategory;
             this.ApparentLoad = load;
             this.LightFlux = flux;
             this.TemperatureColor = color;
+            this.PhotometricWeb = photometricWeb;
+            this.TypeDescription = typeDescription;
             this.Family = family;
         }
 
@@ -79,6 +86,8 @@ namespace LEDEL_BIM
         { get; set; }
         public string FamilyName
         { get; set; }
+        public string FamilyDescription
+        { get; set; }
         public string FamilyPath
         { get; set; }
 
@@ -87,11 +96,12 @@ namespace LEDEL_BIM
             this.FamilyName = familyName;
             this.FamilyTypes = familyTypes;
             this.FamilyPath = familyPath;
+            this.FamilyDescription = this.FamilyTypes[0].TypeDescription;
         }
 
         public override string ToString()
         {
-            return $"Светодиодный светильник {this.FamilyName} \nРасположен в {this.FamilyPath}";
+            return $"{this.FamilyDescription} \nРасположен в {this.FamilyPath}.";
         }
     }
 }

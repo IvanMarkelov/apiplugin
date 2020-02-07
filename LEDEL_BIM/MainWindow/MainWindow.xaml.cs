@@ -26,14 +26,14 @@ namespace LEDEL_BIM.MainWindow
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class SecondaryWindow : Window
-    {
-        string fp = "Testing secondary window.";
-        public SecondaryWindow(string fp)
-        {
-            MessageBox.Show(fp);
-        }
-    }
+    //public partial class SecondaryWindow : Window
+    //{
+    //    string fp = "Testing secondary window.";
+    //    public SecondaryWindow(string fp)
+    //    {
+    //        MessageBox.Show(fp);
+    //    }
+    //}
     public partial class MainWindow : Window
     {
         internal static double defaultLoadFromValue = 0;
@@ -48,6 +48,7 @@ namespace LEDEL_BIM.MainWindow
         internal static string defaultFluxTo = "Световой поток лк, до";
         internal static string defaultTemperature = "Цветовая температура";
         internal static string defaultPhotometricWeb = "Тип КСС";
+        internal static List<LightingFixtureFamily> listOfFamilies;
 
         public static LightingFixtureType lft;
         // double loadFromValue;
@@ -63,16 +64,13 @@ namespace LEDEL_BIM.MainWindow
         }
         private void ShowTree()
         {
-            List<LightingFixtureFamily> families = ListGetter();
-            namesList.ItemsSource = families;
-            treeViewLFF.ItemsSource = families;
+            namesList.ItemsSource = ShowMainWindow.families;
+            treeViewLFF.ItemsSource = ShowMainWindow.families;
         }
         private void ShowUpdatedTree()
         {
-            List<LightingFixtureFamily> families = ListGetter();
-
-            List<LightingFixtureFamily> filteredFamilies = new List<LightingFixtureFamily>();
-            foreach (LightingFixtureFamily family in families)
+            List<LightingFixtureFamily> filteredListOfFamilies = new List<LightingFixtureFamily>();
+            foreach (LightingFixtureFamily family in ShowMainWindow.families)
             {
                 List<LightingFixtureType> temporaryTypeList = Utility.Filters.SearchList(family.FamilyTypes,
                     namesList.Text,
@@ -85,10 +83,10 @@ namespace LEDEL_BIM.MainWindow
 
                 if (temporaryTypeList.Count > 0)
                 {
-                    filteredFamilies.Add(new LightingFixtureFamily(family.FamilyName, family.FamilyPath, temporaryTypeList));
+                    filteredListOfFamilies.Add(new LightingFixtureFamily(family.FamilyName, family.FamilyPath, temporaryTypeList));
                 }
             }
-            treeViewLFF.ItemsSource = filteredFamilies;
+            treeViewLFF.ItemsSource = filteredListOfFamilies;
         }
 
 
