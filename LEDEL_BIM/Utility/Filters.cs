@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace LEDEL_BIM.Utility
 {
@@ -17,7 +18,7 @@ namespace LEDEL_BIM.Utility
                 }
                 else
                 {
-                    types = types.FindAll(x => x.FamilyTypeName.StartsWith(familyNameFilter));
+                    types = types.FindAll(x => x.FamilyTypeName.StartsWith(familyNameFilter, true, CultureInfo.InvariantCulture));
                 }
             }
             return types;
@@ -33,6 +34,20 @@ namespace LEDEL_BIM.Utility
                 else
                 {
                     types = types.FindAll(x => x.FamilyCategory == familyCategoryFilter);
+                }
+            }
+            return types;
+        }
+        private static List<LightingFixtureType> FilterByPhotometricWeb(List<LightingFixtureType> types, string photometricWebFilter)
+        {
+            if (photometricWebFilter != null)
+            {
+                if (photometricWebFilter == "Тип КСС" || photometricWebFilter == "")
+                {
+                }
+                else
+                {
+                    types = types.FindAll(x => x.PhotometricWeb == photometricWebFilter);
                 }
             }
             return types;
@@ -106,7 +121,7 @@ namespace LEDEL_BIM.Utility
         public static List<LightingFixtureType> SearchList(List<LightingFixtureType> types, string familyFilter, string categoryFilter,
         double loadFilterFrom, double loadFilterTo,
         double fluxFilterFrom, double fluxFilterTo,
-        string temperatureColor)
+        string temperatureColor, string photometricWeb)
         {
             List<LightingFixtureType> filtered = types;
 
@@ -115,8 +130,8 @@ namespace LEDEL_BIM.Utility
             filtered = FilterByApparentLoad(filtered, loadFilterFrom, loadFilterTo);
             filtered = FilterByLumFlux(filtered, fluxFilterFrom, fluxFilterTo);
             filtered = FilterByTemperatureColor(filtered, temperatureColor);
+            filtered = FilterByPhotometricWeb(filtered, photometricWeb);
             return filtered;
         }
-
     }
 }

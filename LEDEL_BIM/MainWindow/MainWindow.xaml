@@ -5,41 +5,97 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LEDEL_BIM.MainWindow"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="600">
+             d:DesignHeight="450" d:DesignWidth="600" SizeToContent="Width"
+        WindowStyle="ThreeDBorderWindow" ResizeMode="CanResize" BorderBrush="Black" BorderThickness="1">
+    <Window.Resources>
+
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Border CornerRadius="5"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FilterFields">
+            <Setter Property="Control.Margin" Value="0,0,0,0"/>
+            <Setter Property="Control.MaxWidth" Value="162"/>
+            <Setter Property="Control.MinWidth" Value="140"/>
+            <Setter Property="Control.Height" Value="25"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Left"/>
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+            <Setter Property="Control.FontSize" Value="14"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="0"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="Buttons">
+            <Setter Property="Control.Margin" Value="0,15,0,15"/>
+            <Setter Property="Control.Width" Value="118"/>
+            <Setter Property="Control.Height" Value="25"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+            <Setter Property="Control.VerticalAlignment" Value="Top"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="4"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="Headers">
+            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+            <Setter Property="Control.FontSize" Value="20"/>
+            <Setter Property="Control.FontWeight" Value="DemiBold"/>
+            <Setter Property="Control.FontFamily" Value="Revit_HEB_DWG"/>
+        </Style>
+        <Style x:Key="FieldHeaders">
+            <Setter Property="Control.HorizontalAlignment" Value="Left"/>
+            <Setter Property="Control.Visibility" Value="Hidden"/>
+            <Setter Property="Control.Margin" Value="5,0,0,0"/>
+            <Setter Property="Control.VerticalAlignment" Value="Bottom"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="0.25*" />
-            <ColumnDefinition Width="0.25*" />
-            <ColumnDefinition Width="0.5*" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.15*" />
             <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.15*" />
             <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.15*" />
             <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.15*" />
             <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.15*" />
             <RowDefinition Height="0.2*" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" 
-                   HorizontalAlignment="Center" FontSize="23"
-                   Margin="15,0,0,0"
-                   FontWeight="DemiBold" FontFamily="Revit_HEB_DWG">
-            Выбор параметров
-        </TextBlock>
+        <TextBlock Text="Выбор параметров" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
+                   Style="{StaticResource Headers}" />
 
-        <ComboBox Grid.Column="1" Grid.Row="2" Height="30" 
-                  VerticalAlignment="Center" Margin="0,10,15,10" 
+        <ComboBox Grid.Column="1" Grid.Row="3"
                   Name="namesList" Text="Наименование светильника" 
-                  GotFocus="ComboBox_GotFocus"
+                  Style="{StaticResource FilterFields}"
+                  MinWidth="234"
+            GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus"
                   IsTextSearchCaseSensitive="False" 
                   IsTextSearchEnabled="True" TextSearch.TextPath="FamilyName"
-                  Grid.ColumnSpan="2" FontSize="16" IsEditable="True">
+                  Grid.ColumnSpan="2" IsEditable="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=FamilyName}"/>
@@ -47,9 +103,12 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ComboBox Grid.Column="1" Grid.Row="3" 
+        <ComboBox Grid.Column="1" Grid.Row="5" 
                   Name="typeList" Text="Категория светильника"
-            Height="30" Grid.ColumnSpan="2" Margin="0,10,15,10" VerticalAlignment="Center" FontSize="16" IsEditable="True">
+                  MinWidth="234"
+                  Style="{StaticResource FilterFields}"
+                  GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus"
+                  Grid.ColumnSpan="2" IsEditable="True">
             <TextBlock>Архитектурные</TextBlock>
             <TextBlock>Бытовые</TextBlock>
             <TextBlock>Офисные</TextBlock>
@@ -59,79 +118,144 @@
             <TextBlock>Торговые</TextBlock>
             <TextBlock>Уличные</TextBlock>
         </ComboBox>
-        <TextBox Name ="loadFrom" Grid.Column="1" Grid.Row="4" Height="30" 
-                 VerticalAlignment="Center" Margin="0,10,15,10"
-                 PreviewTextInput="NumberValidationTextBox" GotFocus="TextBox_GotFocus"
-                 MaxLength="6" FontSize="16">
-            Напряжение В, от
+
+        <TextBox Name ="loadFrom" Grid.Column="1" Grid.Row="7"
+                 Style="{StaticResource FilterFields}" MinWidth="160" MaxWidth="160" Width="160"
+                 PreviewTextInput="NumberValidationTextBox"
+                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                 MaxLength="6">
+            Мощность Вт, от
         </TextBox>
 
-        <TextBox Name ="loadTo" Grid.Column="2" Grid.Row="4" Height="30" 
-                 PreviewTextInput="NumberValidationTextBox" GotFocus="TextBox_GotFocus"
-                 VerticalAlignment="Center" Margin="0,10,15,10" MaxLength="6" FontSize="16">
-            Напряжение В, до
+        <TextBox Name ="loadTo" Grid.Column="2" Grid.Row="7"
+                 Style="{StaticResource FilterFields}" MinWidth="160" MaxWidth="160" Width="160"
+                 PreviewTextInput="NumberValidationTextBox" 
+                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                 MaxLength="6">
+            Мощность Вт, до
         </TextBox>
 
-        <TextBox Name ="fluxFrom" Grid.Column="1" Grid.Row="5" Height="30" 
-                 PreviewTextInput="NumberValidationTextBox" GotFocus="TextBox_GotFocus"
-                 VerticalAlignment="Center" Margin="0,10,15,10" MaxLength="6" FontSize="16">
-            Световой поток лк, от
+        <TextBox Name ="fluxFrom" Grid.Column="1" Grid.Row="9"
+                 Style="{StaticResource FilterFields}" MinWidth="160" MaxWidth="160" Width="160"
+                 PreviewTextInput="NumberValidationTextBox"
+                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                 MaxLength="6">
+            Световой поток лм, от
         </TextBox>
 
-        <TextBox Name ="fluxTo" Grid.Column="2" Grid.Row="5" Height="30"
-                 PreviewTextInput="NumberValidationTextBox" GotFocus="TextBox_GotFocus"
-                 VerticalAlignment="Center" Margin="0,10,15,10" MaxLength="6" FontSize="16">
-            Световой поток лк, до
+        <TextBox Name ="fluxTo" Grid.Column="2" Grid.Row="9"
+                 Style="{StaticResource FilterFields}" MinWidth="160" MaxWidth="160" Width="160"
+                 PreviewTextInput="NumberValidationTextBox" 
+                 GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                 MaxLength="6">
+            Световой поток лм, до
         </TextBox>
 
-        <ComboBox Grid.Column="1" Grid.Row="6" LostFocus="colorTemperatureList_LostFocus"
-                  Name="colorTemperatureList" Text="Цветовая температура"
+        <ComboBox Grid.Column="1" Grid.Row="11" Style="{StaticResource FilterFields}"
+                  GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus"
+                  MaxWidth="162"
+                  Name="colorTemperatureList" Text="Цветовая температура" MinWidth="200" Width="200"
                   IsTextSearchCaseSensitive="False" IsTextSearchEnabled="True"
-            Height="30" VerticalAlignment="Center" Margin="0,10,15,10" FontSize="16" IsEditable="True">
+                  IsEditable="True">
             <TextBlock>3000K</TextBlock>
             <TextBlock>4000K</TextBlock>
             <TextBlock>5000K</TextBlock>
             <TextBlock>5700K</TextBlock>
         </ComboBox>
 
-        <ComboBox Grid.Column="2" Grid.Row="6" 
+        <ComboBox Grid.Column="2" Grid.Row="11" 
+                  Style="{StaticResource FilterFields}"
                   Name="photometricWebList" Text="Тип КСС"
-            Height="30" VerticalAlignment="Center" Margin="0,10,15,10" FontSize="16" IsEditable="True">
-            <TextBlock>Д</TextBlock>
+                  HorizontalAlignment="Right" MinWidth="80" MaxWidth="80"
+                  GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus"
+                  IsEditable="True">
             <TextBlock>Г30</TextBlock>
             <TextBlock>Г60</TextBlock>
+            <TextBlock>Д</TextBlock>
+            <TextBlock>К8</TextBlock>
             <TextBlock>К15</TextBlock>
+            <TextBlock>Ш3</TextBlock>
+            <TextBlock>Ш3-К15</TextBlock>
+            <TextBlock>Ш7</TextBlock>
+            <TextBlock>Ш8</TextBlock>
+            <TextBlock>Ш8М</TextBlock>
+            <TextBlock>Ш9</TextBlock>
+            <TextBlock>Ш13</TextBlock>
+            <TextBlock>Ш22</TextBlock>
+            <TextBlock>Ш23</TextBlock>
         </ComboBox>
 
-        <TextBlock Grid.Column="3" Grid.Row="1" FontSize="23" 
-                   HorizontalAlignment="Center" Margin="15,0,0,0"
-                   FontWeight="DemiBold" FontFamily="Revit_HEB_DWG">
-            Подбор светильника
-        </TextBlock>
+        <TextBlock Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"
+                   Style="{StaticResource Headers}" Text="Подбор светильника"/>
 
         <TreeView x:Name="treeViewLFF" SelectedItemChanged="treeViewLFF_SelectedItemChanged"
-                  Grid.Column="3" Grid.Row="2" Grid.RowSpan="5" Margin="15,0,0,0">
+                  Width="280" 
+                  Grid.Column="3" Grid.Row="2" Grid.RowSpan="10" Margin="15,0,0,0">
+            <TreeView.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                      Color="WhiteSmoke"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                      Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                      Color="Transparent" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                      Color="Black" />
+            </TreeView.Resources>
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Path=FamilyTypes}">
-                    <TextBlock Text="{Binding FamilyName}" />
+                <HierarchicalDataTemplate x:Name="FamilyTemplate" ItemsSource="{Binding Path=FamilyTypes}">
+                    <StackPanel x:Name="FamilyPanel" Margin="0,0,0,10"
+                                Orientation="Vertical" Width="238" MouseEnter="FamilyDescription_MouseEnter" MouseLeave="FamilyDescription_MouseLeave">
+
+                        <Image Source="{Binding FamilyImage}" Stretch="Uniform" Height="60" HorizontalAlignment="Center" />
+                        <TextBlock Text="{Binding FamilyName}" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+                        <TextBlock Name="FamilyDescription" Text="{Binding Description}"
+                                   HorizontalAlignment="Left" Visibility="Collapsed" TextWrapping="Wrap" />
+                    </StackPanel>
                     <HierarchicalDataTemplate.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding FamilyTypeName}" />
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding FamilyTypeName}" />
+                            </StackPanel>
+
                         </DataTemplate>
                     </HierarchicalDataTemplate.ItemTemplate>
                 </HierarchicalDataTemplate>
+
             </TreeView.ItemTemplate>
         </TreeView>
 
         <Button x:Name="applyButton" Content="Применить"
-                Grid.Column="3" Grid.Row="7" Margin="25,15,15,15"
+                Style="{StaticResource Buttons}"
+                Grid.Column="1" Grid.Row="12"
                 Click="Button_Click"/>
-        <Button x:Name="insertButton" Content="Вставить светильник"
-                Grid.Column="1" Grid.Row="7" Margin="0,15,15,15"
-                IsEnabled="False"
-                Click="InsertButton_Click"/>
         <Button x:Name="defaultFiltersButton" Content="Сбросить фильтры"
-                Grid.Column="2" Grid.Row="7" Margin="0,15,15,15"
+                Style="{StaticResource Buttons}"
+                Grid.Column="2" Grid.Row="12"
                 IsEnabled="True" Click="defaultFiltersButton_Click"/>
+        <Button x:Name="insertButton" Content="Вставить светильник"
+                Style="{StaticResource Buttons}"
+                Grid.Column="3" Grid.Row="12"
+                IsEnabled="False"
+                Width="200"
+                Click="InsertButton_Click"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" x:Name="NameTextBlock"
+                   Style="{StaticResource FieldHeaders}" Text="Наименование светильника"/>
+        <TextBlock Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" x:Name="CategoryTextBlock"
+                   Style="{StaticResource FieldHeaders}" Text="Категория светильника"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" x:Name="loadFromTextBlock"
+                   Style="{StaticResource FieldHeaders}" Text="Мощность Вт, от"/>
+        <TextBlock Grid.Column="2" Grid.Row="6" x:Name="loadToTextBlock"
+                   Style="{StaticResource FieldHeaders}" Text="Мощность Вт, до"/>
+        <TextBlock Grid.Column="1" Grid.Row="8" x:Name="fluxFromTextBlock"
+                   HorizontalAlignment="Left" Visibility="Hidden"
+                   Style="{StaticResource FieldHeaders}"
+                   Margin="5,0,0,0" Text="Световой поток лм, от"/>
+        <TextBlock Grid.Column="2" Grid.Row="8" x:Name="fluxToTextBlock"
+                   Style="{StaticResource FieldHeaders}" Text="Световой поток лм, до"/>
+        <TextBlock Grid.Column="1" Grid.Row="10" x:Name="colorTemperatureTextBlock"
+                   Style="{StaticResource FieldHeaders}" Text="Цветовая температура"/>
+        <TextBlock Grid.Column="2" Grid.Row="10" x:Name="photoWebTextBlock"
+                   Style="{StaticResource FieldHeaders}" HorizontalAlignment="Right" Margin="0,0,5,0" Text="Тип КСС"/>
     </Grid>
 </Window>
