@@ -16,9 +16,10 @@ namespace LEDEL_BIM.APIUtility
         public static List<LightingFixtureType> ParseDataFromFile(string filePath)
         {
             using (var reader = new StreamReader(filePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csv = new CsvReader(reader))
             {
                 csv.Configuration.RegisterClassMap<LightingFixtureTypeMap>();
+                csv.Configuration.HeaderValidated = null;
                 csv.Configuration.IgnoreBlankLines = true;
                 csv.Configuration.BadDataFound = null;
                 List<LightingFixtureType> types = csv.GetRecords<LightingFixtureType>().ToList();

@@ -34,13 +34,17 @@
       "frameworks": {
         "net472": {
           "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
             "System.Runtime.CompilerServices.Unsafe": {
               "target": "Package",
               "version": "[4.5.2, )"
             },
             "System.Threading.Tasks.Extensions": {
               "target": "Package",
-              "version": "[4.5.1, )"
+              "version": "[4.0.0, )"
             }
           }
         }

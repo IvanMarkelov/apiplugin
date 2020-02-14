@@ -53,7 +53,7 @@ C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\LEDEL_BIM.dll
 C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\CsvHelper.dll
 C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\CsvHelper.xml
-C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\obj\Debug\LEDEL_BIM.csproj.CopyComplete
 C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\i.markelov\Documents\GitHub\apiplugin\LEDEL_BIM\bin\Debug\CsvHelper.pdb
