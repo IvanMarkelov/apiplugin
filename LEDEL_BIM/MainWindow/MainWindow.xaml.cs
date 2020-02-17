@@ -334,5 +334,18 @@ namespace LEDEL_BIM.MainWindow
             //spaceBlock.Visibility = Visibility.Collapsed;
             // MessageBox.Show(childCount.ToString());
         }
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            StackPanel sp = (StackPanel)sender;
+            TextBlock tb = (TextBlock)sp.FindName("typeInfo");
+            tb.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            StackPanel sp = (StackPanel)sender;
+            TextBlock tb = (TextBlock)sp.FindName("typeInfo");
+            tb.Visibility = System.Windows.Visibility.Collapsed;
+        }
     }
 }

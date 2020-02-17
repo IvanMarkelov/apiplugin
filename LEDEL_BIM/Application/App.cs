@@ -45,8 +45,8 @@ namespace LEDEL_BIM
 
             PushButtonData pushButtonData = new PushButtonData("nameButton", "Подбор\n светильника", AddInPath, "LEDEL_BIM.ShowMainWindow");
             PushButton pushButton = ribbonPanel.AddItem(pushButtonData) as PushButton;
-            pushButton.LargeImage = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "Ledel_logo.png"));
-            pushButton.Image = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "Ledel_logoS.png"));
+            pushButton.LargeImage = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "logo_96.png"));
+            pushButton.Image = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "logo_48.png"));
         //    pushButton.ToolTipImage = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "Ledel_logoS.png"));
             pushButton.ToolTip = "Вызвать меню подбора светильника.";
             //application.ControlledApplication.DocumentCreated += new EventHandler<Autodesk.Revit.DB.Events.DocumentCreatedEventArgs>(DocumentCreated);
