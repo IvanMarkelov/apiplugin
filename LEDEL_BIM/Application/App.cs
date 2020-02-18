@@ -17,42 +17,39 @@ namespace LEDEL_BIM
     public class App : IExternalApplication
     {
         // OnStartup() - called when Revit starts.
-        static string AddInPath = typeof(App).Assembly.Location;
-        // Button icons directory
-        static string ButtonIconsFolder = Path.GetDirectoryName(AddInPath);
-
+        static string addInPath = typeof(App).Assembly.Location;
+        // Contents directory
+        static string contentsFolder = new DirectoryInfo(Path.GetDirectoryName(addInPath)).Parent.FullName;
+        // Resources directory
+        internal static string resourcesFolder = contentsFolder + "\\Resources\\";
         //MainWindow.MainWindow mainWindow;
 
         public Result OnStartup(UIControlledApplication app)
         {
-            //TaskDialog.Show("My Dialog", "Testing attempt 1");
             CreateRibbonSamplePanel(app);
-
             return Result.Succeeded;
         }
-
-        // OnShutdown() - called when Revit ends.
-
         public Result OnShutdown(UIControlledApplication app)
         {
             return Result.Succeeded;
         }
-
         private void CreateRibbonSamplePanel(UIControlledApplication application)
         {
             string panelSampleName = "Подбор светильника";
+            string helpPath = resourcesFolder + "Help.txt";
+            string toolTip = "Вызвать меню подбора светильника.";
+            string longDescription = "Открывает каталог, в котором можно подобрать светильники LEDEL.";
             RibbonPanel ribbonPanel = application.CreateRibbonPanel(panelSampleName);
 
-            PushButtonData pushButtonData = new PushButtonData("nameButton", "Подбор\n светильника", AddInPath, "LEDEL_BIM.ShowMainWindow");
+            PushButtonData pushButtonData = new PushButtonData("nameButton", "Подбор\n светильника", addInPath, "LEDEL_BIM.ShowMainWindow");
             PushButton pushButton = ribbonPanel.AddItem(pushButtonData) as PushButton;
-            pushButton.LargeImage = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "logo_96.png"));
-            pushButton.Image = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "logo_48.png"));
-        //    pushButton.ToolTipImage = new BitmapImage(new Uri(Path.GetDirectoryName(AddInPath) + "\\" + "Ledel_logoS.png"));
-            pushButton.ToolTip = "Вызвать меню подбора светильника.";
-            //application.ControlledApplication.DocumentCreated += new EventHandler<Autodesk.Revit.DB.Events.DocumentCreatedEventArgs>(DocumentCreated);
-            //CreateWindow();
-            //ShowMainWindow(application, "Window", pb);
+            pushButton.LargeImage = new BitmapImage(new Uri(resourcesFolder + "logo_96.png"));
+            pushButton.Image = new BitmapImage(new Uri(resourcesFolder + "logo_48.png"));
+            pushButton.ToolTipImage = new BitmapImage(new Uri(resourcesFolder + "logo_48.png"));
+            pushButton.ToolTip = toolTip;
+            pushButton.LongDescription = longDescription;
+            ContextualHelp help = new ContextualHelp(ContextualHelpType.ChmFile, helpPath);
+            pushButton.SetContextualHelp(help);
         }
     }
-
 }

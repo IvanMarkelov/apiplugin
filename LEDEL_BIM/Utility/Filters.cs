@@ -23,7 +23,6 @@ namespace LEDEL_BIM.Utility
             }
             return types;
         }
-
         private static List<LightingFixtureType> FilterByFamilyCategory(List<LightingFixtureType> types, string familyCategoryFilter)
         {
             if (familyCategoryFilter != null)
@@ -52,7 +51,6 @@ namespace LEDEL_BIM.Utility
             }
             return types;
         }
-
         private static List<LightingFixtureType> FilterByApparentLoad(List<LightingFixtureType> filtered, double loadFilterFrom, double loadFilterTo)
         {
             if (loadFilterFrom >= 0)
@@ -73,7 +71,6 @@ namespace LEDEL_BIM.Utility
             }
             return filtered;
         }
-
         private static List<LightingFixtureType> FilterByLumFlux(List<LightingFixtureType> filtered, double fluxFilterFrom, double fluxFilterTo)
         {
             if (fluxFilterFrom >= 0)
@@ -94,7 +91,6 @@ namespace LEDEL_BIM.Utility
             }
             return filtered;
         }
-
         private static List<LightingFixtureType> FilterByTemperatureColor(List<LightingFixtureType> filtered, string temperatureColor)
         {
             if (temperatureColor != null)
@@ -117,7 +113,6 @@ namespace LEDEL_BIM.Utility
             }
             return filtered;
         }
-
         public static List<LightingFixtureType> SearchList(List<LightingFixtureType> types, string familyFilter, string categoryFilter,
         double loadFilterFrom, double loadFilterTo,
         double fluxFilterFrom, double fluxFilterTo,
