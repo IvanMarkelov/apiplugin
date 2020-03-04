@@ -19,10 +19,9 @@ namespace LEDEL_BIM
         // OnStartup() - called when Revit starts.
         static string addInPath = typeof(App).Assembly.Location;
         // Contents directory
-        static string contentsFolder = new DirectoryInfo(Path.GetDirectoryName(addInPath)).Parent.FullName;
+        static string contentsFolder = Path.GetDirectoryName(addInPath);
         // Resources directory
         internal static string resourcesFolder = contentsFolder + "\\Resources\\";
-        //MainWindow.MainWindow mainWindow;
 
         public Result OnStartup(UIControlledApplication app)
         {

@@ -11,7 +11,7 @@
                     SupportedLocales="Ru">
   <CompanyDetails Name="LEDEL"
                   URL="https://ledel.ru/"
-                  Email="i.markelov@ledel.ru"/>
+                  Email="i.markelov@ledel.ru/imark.work.ac@gmail.com"/>
   <RuntimeRequirements OS="Win32|Win64"
                        Platform="Revit"
                        SeriesMin="R2017"
