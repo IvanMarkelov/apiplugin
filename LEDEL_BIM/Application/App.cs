@@ -35,7 +35,7 @@ namespace LEDEL_BIM
         private void CreateRibbonSamplePanel(UIControlledApplication application)
         {
             string panelSampleName = "Подбор светильника";
-            string helpPath = resourcesFolder + "Help.txt";
+            string helpPath = resourcesFolder + "LEDEL BIM.html";
             string toolTip = "Вызвать меню подбора светильника.";
             string longDescription = "Открывает каталог, в котором можно подобрать светильники LEDEL.";
             RibbonPanel ribbonPanel = application.CreateRibbonPanel(panelSampleName);
