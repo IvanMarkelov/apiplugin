@@ -24,7 +24,7 @@ namespace LEDEL_BIM.APIUtility
             m_rvtDoc = rvtUIDoc.Document;
 
 
-            string[] filePaths = Directory.GetFiles(@"C:\Users\Admin\Desktop\REVIT_BIM", "*.rfa");
+            string[] filePaths = Directory.GetFiles(MainWindow.MainWindow.familyFolder, "*.rfa");
             List<LightingFixtureFamily> families = new List<LightingFixtureFamily>();
             LightingFixtureFamily family;
             foreach (string path in filePaths)

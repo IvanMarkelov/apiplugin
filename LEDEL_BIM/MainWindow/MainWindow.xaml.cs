@@ -29,6 +29,7 @@ namespace LEDEL_BIM.MainWindow
     /// 
     public partial class MainWindow : Window
     {
+        internal static string familyFolder = App.resourcesFolder + "2017\\";
         internal static double defaultLoadFromValue = 0;
         internal static double defaultLoadToValue = 5000;
         internal static double defaultFluxFromValue = 0;
@@ -44,12 +45,10 @@ namespace LEDEL_BIM.MainWindow
         List<LightingFixtureFamily> families;
 
         public static LightingFixtureType lft;
-        // double loadFromValue;
-        // double loadToValue;
+
         string familyName = defaultFamilyName;
         InsertFamilyType ift;
         ExternalEvent TypeInserting;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -96,6 +95,10 @@ namespace LEDEL_BIM.MainWindow
                     filteredFamilies.Add(new LightingFixtureFamily(family.FamilyName, family.FamilyPath, temporaryTypeList, family.FamilyImage, family.Description));
                 }
             }
+            //if (filteredFamilies.Count == 0)
+            //{
+            //    MessageBox.Show("Подходящие по параметрам светильники не найдены.\nПожалуйста, попробуйте снова.");
+            //}
             treeViewLFF.ItemsSource = filteredFamilies;
         }
 
@@ -109,8 +112,6 @@ namespace LEDEL_BIM.MainWindow
         {
             lft = (LightingFixtureType)treeViewLFF.SelectedItem;
             ift = new InsertFamilyType();
-            //MessageBox.Show($"Светильник {lft.FamilyTypeName}, находящийся в {lft.Family.FamilyPath} будет вставлен в проект.");
-            //MessageBox.Show(File.Exists(lft.Family.FamilyPath).ToString());
             TypeInserting = ExternalEvent.Create(ift);
             Close();
             TypeInserting.Raise();
@@ -120,7 +121,6 @@ namespace LEDEL_BIM.MainWindow
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
         private double GetDoubleValue(string valueAsString, double defaultValue)
         {
             double result;
@@ -138,12 +138,11 @@ namespace LEDEL_BIM.MainWindow
         {
             System.Windows.Controls.ComboBox cb = (System.Windows.Controls.ComboBox)sender;
             cb.Text = string.Empty;
-            //  cb.GotFocus -= ComboBox_GotFocus;
         }
 
         private List<LightingFixtureFamily> ListGetter()
         {
-            string[] filePaths = Directory.GetFiles(@"C:\Users\Admin\Desktop\REVIT_BIM\Revit Family Types", "*.txt");
+            string[] filePaths = Directory.GetFiles(familyFolder, "*.txt");
             List<LightingFixtureFamily> families = APIUtility.FamilyParser.RetriveAllFamiliesFromFolder(filePaths);
 
             return families;
@@ -239,31 +238,6 @@ namespace LEDEL_BIM.MainWindow
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.TextBox tb = (System.Windows.Controls.TextBox)sender;
-            // if (tb.Text == "")
-            //{
-            //switch (tb.Name)
-            //{
-            //    case "loadFrom":
-            //        tb.Text = defaultLoadFrom;
-            //        loadFromTextBlock.Visibility = Visibility.Hidden;
-            //        break;
-            //    case "loadTo":
-            //        tb.Text = defaultLoadTo;
-            //        loadToTextBlock.Visibility = Visibility.Hidden;
-            //        break;
-            //    case "fluxFrom":
-            //        tb.Text = defaultFluxFrom;
-            //        fluxFromTextBlock.Visibility = Visibility.Hidden;
-            //        break;
-            //    case "fluxTo":
-            //        tb.Text = defaultFluxTo;
-            //        fluxToTextBlock.Visibility = Visibility.Hidden;
-            //        break;
-            //    default:
-            //        tb.Text = "Непредвиденная ошибка";
-            //        break;
-            //}
-            //}
             if (tb.Text == "")
             {
                 switch (tb.Name)
@@ -290,7 +264,6 @@ namespace LEDEL_BIM.MainWindow
                 }
             }
         }
-
         private void treeViewLFF_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             object obj = (object)treeViewLFF.SelectedItem;
@@ -320,19 +293,26 @@ namespace LEDEL_BIM.MainWindow
         {
             StackPanel sp = (StackPanel)sender;
             TextBlock tb = (TextBlock)sp.FindName("FamilyDescription");
-            // TextBlock spaceBlock = (TextBlock)sp.FindName("SpaceBlock");
             tb.Visibility = System.Windows.Visibility.Visible;
-            //spaceBlock.Visibility = Visibility.Visible;
-            // MessageBox.Show(childCount.ToString());
         }
         private void FamilyDescription_MouseLeave(object sender, MouseEventArgs e)
         {
             StackPanel sp = (StackPanel)sender;
             TextBlock tb = (TextBlock)sp.FindName("FamilyDescription");
-            //TextBlock spaceBlock = (TextBlock)sp.FindName("SpaceBlock");
             tb.Visibility = System.Windows.Visibility.Collapsed;
-            //spaceBlock.Visibility = Visibility.Collapsed;
-            // MessageBox.Show(childCount.ToString());
+        }
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            StackPanel sp = (StackPanel)sender;
+            TextBlock tb = (TextBlock)sp.FindName("typeInfo");
+            tb.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            StackPanel sp = (StackPanel)sender;
+            TextBlock tb = (TextBlock)sp.FindName("typeInfo");
+            tb.Visibility = System.Windows.Visibility.Collapsed;
         }
     }
 }

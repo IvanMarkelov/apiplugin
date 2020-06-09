@@ -33,8 +33,7 @@ namespace LEDEL_BIM.APIUtility
         }
         public static string ReturnFamilyImageFilePath(string filePath)
         {
-            string temp = filePath.Replace("txt", "png");
-            string imagePath = temp.Replace("Revit Family Types", "Resources");
+            string imagePath = filePath.Replace("txt", "png");
             return imagePath;
         }
         public static BitmapImage GetFamilyImage(string filePath)
@@ -62,7 +61,6 @@ namespace LEDEL_BIM.APIUtility
                 {
                     type.Family = lff;
                 }
-                //Console.WriteLine(lff);
                 listOfFamilies.Add(lff);
             }
             return listOfFamilies;

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationPackage SchemaVersion="1.0"
+                    AutodeskProduct="Revit"
+                    ProductType="Application"
+                    Name="LEDEL BIM"
+                    AppVersion="1.0.0"
+                    Description="Lighting fixtures application for Autodesk® Revit® 2017"
+                    Author="Ivan Markelov"
+                    Icon="./Contents/Resources/logo_96.png"
+                    HelpFile="./Contents/Resources/Help.txt"
+                    SupportedLocales="Ru">
+  <CompanyDetails Name="LEDEL"
+                  URL="https://ledel.ru/"
+                  Email="i.markelov@ledel.ru/imark.work.ac@gmail.com"/>
+  <RuntimeRequirements OS="Win32|Win64"
+                       Platform="Revit"
+                       SeriesMin="R2017"
+                       SeriesMax="R2020"/>
+  <Components Description="2017 families">
+    <RuntimeRequirements OS="Win32|Win64"
+                     Platform="Revit"
+                     SeriesMin="R2017"
+                     SeriesMax="R2020"/>
+    <ComponentEntry AppName="LEDEL BIM"
+                    Version="1.0.0"
+                    ModuleName="./Contents/LEDEL_BIM.addin"
+                    AppDescription="Allows to search and insert into project LEDEL's lighting fixture families"/>
+  </Components>
+              
+  
+</ApplicationPackage>

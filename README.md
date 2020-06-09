@@ -1,4 +1,3 @@
 # apiplugin
-Building a plugin for Revit API.
-What plugin does?
-It parses the list of lighting fixture families (*.rfa*) from a certain folder and allows you to filter them and load them directly into Revit project though a GUI.
+Plugin for Autodesk App store.
+Plugin is a content library for Autodesk Revit, a WPF form which can be open in Revit, after openning it parses a list of lighting fixture families from plugin's folder and allows you to filter them by technical parameters and load them directly into Revit project.
